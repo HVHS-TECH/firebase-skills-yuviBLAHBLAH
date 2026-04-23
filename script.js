@@ -25,3 +25,11 @@ function helloWorld(){
     }
   )
 }
+function byeWorld(){
+  console.log("Running byeWorld()")
+  firebase.database().ref('/').set(
+    {
+      message: 'bye'
+    }
+  )
+}
