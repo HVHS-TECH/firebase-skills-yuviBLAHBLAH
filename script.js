@@ -53,5 +53,32 @@ function display(snapshot) {
 }
 function fb_readListener() {
   console.log("Read Listener");
-  firebase.database().ref('/message').on('value', fb_logDatabaseRead)
+  firebase.database().ref('/message').on('value', displayRead)
+}
+function zipyDipy(){
+  console.log("Running zipyDipy()")
+  firebase.database().ref('/').set()
+   highScoreTable = {
+      users: {
+        size: {
+          bigBoy: 67,
+          smallBoy: 6.7,
+          fillip: 12,
+          bung: 8739457389,
+        }
+      },
+      users: {
+      elasticity: {
+        bigBoy: 67,
+        smallBoy: 6.7,
+        fillip: 12,
+        bung: 8739457389,
+      }
+    }
+}
+firebase.database().ref('/').set(highScoreTable)
+}
+function fb_readHighScores(){
+  console.log("Reading high scores");
+  firebase.database().ref('/highScores/game1').once('value', displayRead, fb_readError)
 }
