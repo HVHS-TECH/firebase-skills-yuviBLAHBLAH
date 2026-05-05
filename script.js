@@ -73,13 +73,17 @@ function zipyDipy() {
           smallBoy: 6.7,
           fillip: 12,
           bung: 8739457389,
-        }
+        },
       }
     }
   )
 }
-firebase.database().ref('/').set(highScoreTable)
+
+function fb_Error() {
+  console.log("blah blah ble ble")
+}
+
 function fb_readHighScores() {
   console.log("Reading high scores");
-  firebase.database().ref('/highScores/game1').once('value', displayRead, fb_readError)
+  firebase.database().ref('/highScores/game1').once('value', displayRead, fb_Error)
 }
