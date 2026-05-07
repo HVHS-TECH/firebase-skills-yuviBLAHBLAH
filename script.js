@@ -39,6 +39,7 @@ function simpleRead() {
   console.log("Leaving simpleRead")
 }
 function displayRead(snapshot) {
+  console.log(snapshot.val())
   console.log("Running displayRead(), the message is: " + snapshot.val())
   HTML_OUTPUT.innerHTML = snapshot.val();
 }
@@ -55,6 +56,13 @@ function fb_readListener() {
   console.log("Read Listener");
   firebase.database().ref('/message').on('value', displayRead)
 }
+
+
+function fb_readHighScores() {
+  console.log("Reading high scores");
+  firebase.database().ref('/game1/users').once('value', displayRead, fb_Error)
+}
+
 function zipyDipy() {
   console.log("Running zipyDipy()")
   firebase.database().ref('/').set(
@@ -81,9 +89,4 @@ function zipyDipy() {
 
 function fb_Error() {
   console.log("blah blah ble ble")
-}
-
-function fb_readHighScores() {
-  console.log("Reading high scores");
-  firebase.database().ref('/highScores/game1').once('value', displayRead, fb_Error)
 }
