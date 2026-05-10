@@ -39,6 +39,7 @@ function simpleRead() {
   console.log("Leaving simpleRead")
 }
 function displayRead(snapshot) {
+  console.log(snapshot.val())
   console.log("Running displayRead(), the message is: " + snapshot.val())
   HTML_OUTPUT.innerHTML = snapshot.val();
 }
