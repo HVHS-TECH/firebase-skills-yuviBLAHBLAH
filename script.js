@@ -62,8 +62,26 @@ function fb_readHighScores() {
   firebase.database().ref('/game1/users').once('value', displayRead, fb_Error)
 }
 
-function fb_displayHighScores(snapshot) {
-  console.log("fillip got "+ snapshot.val()["fillip"]+" points");
+function fb_readFillipHs() {
+  console.log("Reading high scores");
+  firebase.database().ref('/game1/users/fillip').once('value', displayRead, fb_Error)
+}
+function array(){
+let names = Object.keys(zipyDipy);
+console.log(names);
+
+for(i = 0; i < names.length;i++){
+  let key = names[i];
+  console.log("score "+i+" is for "+ key +". "+ zipyDipy[key] + " points.")
+}
+}
+
+function fb_showOneScore(child){
+  console.log(child.val());
+}
+
+function fb_readHighScores2(snapshot){
+  snapshot.forEach(fb_showOneScore)
 }
 
 function zipyDipy() {
