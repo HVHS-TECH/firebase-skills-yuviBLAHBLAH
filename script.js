@@ -33,6 +33,7 @@ function byeWorld() {
     }
   )
 }
+// fix this => if u dont hv a msg, tell me
 function simpleRead() {
   console.log("Reading message");
   firebase.database().ref('/').child('message').once('value', displayRead, fb_readError);
@@ -78,6 +79,7 @@ for(i = 0; i < names.length;i++){
 
 function fb_showOneScore(child){
   console.log(child.key+" got"+ child.val()+" points");
+  HTML_OUTPUT.innerHTML += "<p>score for "+ child.key +". "+ child.val() + " points.</p>"
 }
 
 function fb_eachHighScores(snapshot){
@@ -87,15 +89,6 @@ function fb_eachHighScores(snapshot){
 function fb_readHighScores2() {
   console.log("Reading high scores again");
   firebase.database().ref('/game1/users').orderByValue().limitToLast(3).once('value', fb_eachHighScores, fb_Error)
-}
-
-function fb_popupLogin(){
-  var provider = firebase.auth.GoogleAuthProvider();
-
-  firebase.auth().signInWithPopup(provider).then((result) => {
-    GLOBAL_user = result.user; 
-    console.log("user has logged in")
-  });
 }
 
 function zipyDipy() {
